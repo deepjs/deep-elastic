@@ -1,0 +1,25 @@
+{
+  "name": "deep-elastic",
+  "description":"elasticsearch client (store) for deepjs",
+  "author":"Gilles Coomans <gilles.coomans@gmail.com>", 
+  "version": "0.1.0",
+  "contributors": ["Philippe Delabye <phil@chemicalrules.net>"],
+  "licenses": [
+    {
+         "type": "LGPLv3.0",
+         "url": "http://www.gnu.org/licenses/lgpl-3.0.txt"
+     }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deepjs/deep-elastic.git"
+  },
+  "dependencies": {
+    "deepjs": ">=0.9.6"
+  },
+  "mappings":{
+  },
+  "engine":{
+    "node" : ">=0.10.0" 
+  }
+}
