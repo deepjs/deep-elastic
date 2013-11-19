@@ -98,6 +98,7 @@ define(["require", "deepjs"],function (require, deep)
 				return deep.when(deep.errors.Internal("store hasn't been configured yet. aborting."));
 			var searchParam = { query: null };
 			options.range = options.range || {};
+			var self = this;
 			deep(options.fields || this.fields).query("./*?_schema.type=string").interpret(options);
 			if(options.filter || this.filter)
 			{
@@ -108,11 +109,11 @@ define(["require", "deepjs"],function (require, deep)
                                 "fields":options.fields || this.fields,
                                 "like_text": encodeURIComponent(id),
                                 "max_query_terms":12,
-                                "min_similarity":options.fuzzy || 0.99
+                                "min_similarity":options.fuzzy || self.fuzzy || 0.6
                             }
                         },
                         "filter" : {
-                            "term" : options.filter || this.filter || { "status" : "published" }
+                            "term" : options.filter || this.filter
                         }
                     }
 				};
@@ -123,7 +124,7 @@ define(["require", "deepjs"],function (require, deep)
                         "fields": options.fields || this.fields || [],
                         "like_text": encodeURIComponent(id),
                         "max_query_terms":12,
-                        "min_similarity":options.fuzzy || self.fuzzy || 0.99
+                        "min_similarity":options.fuzzy || self.fuzzy || 0.6
                     }
                 };
 
