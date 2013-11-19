@@ -112,7 +112,7 @@ define(["require", "deepjs"],function (require, deep)
                             }
                         },
                         "filter" : {
-                            "term" : options.filter || this.filter || { "status" : "published" }
+                            "term" : options.filter || this.filter
                         }
                     }
 				};
