@@ -83,6 +83,10 @@ define(["require", "deepjs"],function (require, deep)
 			deep.utils.up(options, this);
 	},
 	{
+		createIndex:function(db, collection, name, type)
+		{
+			var body = {"type": "mongodb", "mongodb": { "db": db, "collection": collection}, "index": {"name": name,"type": type}};
+		}
 		/**
 		 * get a query 
 		 * @param  {[type]} id      [description]
