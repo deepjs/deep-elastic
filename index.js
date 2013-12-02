@@ -86,7 +86,7 @@ define(["require", "deepjs"],function (require, deep)
 		createIndex:function(db, collection, name, type)
 		{
 			var body = {"type": "mongodb", "mongodb": { "db": db, "collection": collection}, "index": {"name": name,"type": type}};
-		}
+		},
 		/**
 		 * get a query 
 		 * @param  {[type]} id      [description]
@@ -98,7 +98,7 @@ define(["require", "deepjs"],function (require, deep)
 			if(id == "?" || !id)
 				return deep.when(deep.utils.createRangeObject(0, 0, 0, 0, []));
 			options = options || this.defaultOptions || {};
-			if((!options.path && !this.path) || !(options.fields || this.fields))
+			if((!options.indexName && !this.indexName) || !(options.fields || this.fields))
 				return deep.when(deep.errors.Internal("store hasn't been configured yet. aborting."));
 			var searchParam = { query: null };
 			options.range = options.range || {};
@@ -141,7 +141,7 @@ define(["require", "deepjs"],function (require, deep)
 			var opt = {
 				host: options.host || this.host || 'localhost',
 				port: options.port || this.port || 9200,
-				path: options.path || this.path,
+				path: (options.indexName || this.indexName)+"/_search",
 				method:"POST"
 			};
 			opt.headers = {
@@ -161,16 +161,20 @@ define(["require", "deepjs"],function (require, deep)
 	 * deep.store.Elastic.create("search-fiche", {
 	 *		host:"10.211.55.10",  // optional : default = 'localhost'
 	 *		port:9200, // optional : default = 9200
-	 *		path:'smartrep-fiches/_search',
+	 *		index:'smartrep-fiches',
 	 *		fields:["content.{ language }.title","content.{ language }.description"],  
 	 *		filter:{ "status":"published" }, // optional : default = {}
-	 *		fuzzy:0.99	// optional : default = 0.99,
+	 *		fuzzy:0.9	// optional : default = 0.6,
 	 *		defaultOptions:{ language:"fr" }
 	 * });
 	 *
 	 *
 	 * deep.store("search-fiche").get("github").log();
-	 * 
+	 *
+	 *
+	 * todo : 
+	 *
+	 * deep.store.Elastic.createIndex()
 	 */
 
 
