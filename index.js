@@ -76,9 +76,9 @@ define(["require", "deepjs"],function (require, deep)
 	};
 
 
-	deep.store.Elastic = deep.compose.Classes(deep.Store, function(protocole, options){
+	deep.store.Elastic = deep.compose.Classes(deep.Store, function(protocol, options){
 		if(arguments.length == 1)
-			options = protocole;
+			options = protocol;
 		if(options)
 			deep.utils.up(options, this);
 	},
@@ -151,8 +151,8 @@ define(["require", "deepjs"],function (require, deep)
 		}
 	});
 
-	deep.store.Elastic.create = function(protocole, options){
-		return new deep.store.Elastic(protocole, options);
+	deep.store.Elastic.create = function(protocol, options){
+		return new deep.store.Elastic(protocol, options);
 	};
 
 	/**
