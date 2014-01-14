@@ -2,7 +2,7 @@
   "name": "deep-elastic",
   "description":"elasticsearch client (store) for deepjs",
   "author":"Gilles Coomans <gilles.coomans@gmail.com>", 
-  "version": "0.1.0",
+  "version": "0.1.1",
   "contributors": ["Philippe Delabye <phil@chemicalrules.net>"],
   "licenses": [
     {
@@ -15,7 +15,7 @@
     "url": "https://github.com/deepjs/deep-elastic.git"
   },
   "dependencies": {
-    "deepjs": ">=0.9.6"
+    "deepjs": ">=0.10.1"
   },
   "mappings":{
   },
