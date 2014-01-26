@@ -103,7 +103,7 @@ define(["require", "deepjs"],function (require, deep)
 			var searchParam = { query: null };
 			options.range = options.range || {};
 			var self = this;
-			deep(options.fields || this.fields).query("./*?_schema.type=string").interpret(options);
+			deep(options.fields || this.fields).query("./*?_type=string").interpret(options);
 			if(options.filter || this.filter)
 			{
 				searchParam.query = {
